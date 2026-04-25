@@ -10,21 +10,26 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_ui.ui.TitleText
 import com.example.core_viewmodel.courses_viewModel.CoursesViewModel
-import com.example.feature_profile.costant.ProfileViewConstant.PROFILE_SCREEN_BOX_PADDING
 import com.example.feature_profile.R
+import com.example.feature_profile.costant.ProfileViewConstant.PROFILE_SCREEN_BOX_PADDING
+
 @Composable
 fun ProfileScreen(courseList: List<CoursesDomainModel>, coursesViewModel: CoursesViewModel) {
-   Column(Modifier.fillMaxSize().padding(horizontal =PROFILE_SCREEN_BOX_PADDING).verticalScroll(rememberScrollState())){
-       TitleText(stringResource(R.string.label_text))
-       Spacer(Modifier.height(PROFILE_SCREEN_BOX_PADDING))
-       NavigationInProfile()
-       Spacer(Modifier.height(PROFILE_SCREEN_BOX_PADDING))
-       TitleText(stringResource(R.string.second_label_text))
-       Spacer(Modifier.height(PROFILE_SCREEN_BOX_PADDING))
-       CourseView(courseList,coursesViewModel)
-   }
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(horizontal = PROFILE_SCREEN_BOX_PADDING)
+            .verticalScroll(rememberScrollState())
+    ) {
+        TitleText(stringResource(R.string.label_text))
+        Spacer(Modifier.height(PROFILE_SCREEN_BOX_PADDING))
+        NavigationInProfile()
+        Spacer(Modifier.height(PROFILE_SCREEN_BOX_PADDING))
+        TitleText(stringResource(R.string.second_label_text))
+        Spacer(Modifier.height(PROFILE_SCREEN_BOX_PADDING))
+        CourseView(courseList, coursesViewModel)
+    }
 }

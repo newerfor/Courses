@@ -1,11 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)  // ← изменено
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "com.example.core_domain"
-    compileSdk = 36  // ← исправлено
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24

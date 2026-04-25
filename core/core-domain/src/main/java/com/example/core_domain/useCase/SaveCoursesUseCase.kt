@@ -6,7 +6,7 @@ import com.example.core_domain.repository.CoursesRepository
 class SaveCoursesUseCase(
     private val repository: CoursesRepository
 ) {
-    suspend fun invoke(courses: CoursesDomainModel){
+    suspend fun invoke(courses: CoursesDomainModel) {
         repository.saveCourses(courses)
     }
 }

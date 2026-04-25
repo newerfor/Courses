@@ -4,7 +4,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-object CoursesCardConstant{
+object CoursesCardConstant {
     val GLASS_CHIP_CORNER = 12.dp
     val GLASS_CHIP_PADDING_HORIZONTAL = 6.dp
     val GLASS_CHIP_PADDING_VERTICAL = 4.dp
@@ -32,7 +32,8 @@ object CoursesCardConstant{
     val IMAGE_ALIGNMENT_VERTICAL_BIAS = -0.4f
     val IMAGE_ALIGNMENT_HORIZONTAL_BIAS = 0f
 }
-object NavigationBarConstant{
+
+object NavigationBarConstant {
     val LOAD_ROUND_SIZE = 50.dp
 
     // EmptyMessage
@@ -61,7 +62,8 @@ object NavigationBarConstant{
     val FOOTER_ITEM_ICON_SIZE = 24.dp
     val FOOTER_ITEM_SPACER = 4.dp
 }
-object StateViewConstant{
+
+object StateViewConstant {
     val LOAD_ROUND_SIZE = 50.dp
 
     // EmptyMessage
@@ -78,6 +80,7 @@ object StateViewConstant{
     val ERROR_MESSAGE_BUTTON_CORNER = 12.dp
     val ERROR_MESSAGE_BUTTON_FONT_SIZE = 12
 }
+
 object TextConstant {
     val LOGIN_TITLE_FONT_SIZE = 28.sp
     val LOGIN_TITLE_LINE_HEIGHT = 36.sp

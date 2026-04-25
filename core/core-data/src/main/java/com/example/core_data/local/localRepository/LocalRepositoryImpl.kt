@@ -1,14 +1,12 @@
 package com.example.core_data.local.localRepository
 
-import android.content.Context
-import android.util.Log
 import com.example.core_data.local.dao.CoursesDao
 import com.example.core_data.local.model.CoursesEntity
 import com.example.core_data.local.model.UserEntity
 
 class LocalRepositoryImpl(
     private val dao: CoursesDao,
-):LocalDataSource{
+) : LocalDataSource {
     override suspend fun getLikedCourses(): List<CoursesEntity> {
         return dao.getLikedCourse()
     }

@@ -70,7 +70,9 @@ fun CardImageSpace(course: CoursesDomainModel, coursesViewModel: CoursesViewMode
         )
 
         Row(
-            modifier = Modifier.fillMaxSize().padding(CONTAINER_PADDING),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(CONTAINER_PADDING),
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.Top
         ) {
@@ -121,7 +123,9 @@ fun CardImageSpace(course: CoursesDomainModel, coursesViewModel: CoursesViewMode
         }
 
         Row(
-            modifier = Modifier.fillMaxSize().padding(CONTAINER_PADDING),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(CONTAINER_PADDING),
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.Bottom
         ) {

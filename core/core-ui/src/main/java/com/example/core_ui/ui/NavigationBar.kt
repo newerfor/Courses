@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.core_navigation.NavRoutes
 import com.example.core_ui.R
@@ -82,7 +83,8 @@ fun NavigationBar(
                     .padding(start = NAV_BAR_ITEM_PADDING_START),
                 Arrangement.Center, Alignment.CenterHorizontally
             ) {
-                FooterItem(painterResource(R.drawable.footer_main), "Главная", selectedIndex, 1) {
+                FooterItem(painterResource(R.drawable.footer_main),
+                    stringResource(R.string.footer_main_text), selectedIndex, 1) {
                     if (selectedIndex.value != 1) {
                         navController.navigate(NavRoutes.MainScreen.routes)
                         selectedIndex.value = 1
@@ -96,7 +98,12 @@ fun NavigationBar(
                     .padding(start = NAV_BAR_ITEM_PADDING_START),
                 Arrangement.Center, Alignment.CenterHorizontally
             ) {
-                FooterItem(painterResource(R.drawable.footer_bookmark), "Избранное", selectedIndex, 2) {
+                FooterItem(
+                    painterResource(R.drawable.footer_bookmark),
+                    stringResource(R.string.footer_follow_text),
+                    selectedIndex,
+                    2
+                ) {
                     if (selectedIndex.value != 2) {
                         navController.navigate(NavRoutes.Favorite.routes)
                         selectedIndex.value = 2
@@ -110,7 +117,12 @@ fun NavigationBar(
                     .padding(start = NAV_BAR_ITEM_PADDING_START),
                 Arrangement.Center, Alignment.CenterHorizontally
             ) {
-                FooterItem(painterResource(R.drawable.footer_profile), "Аккаунт", selectedIndex, 3) {
+                FooterItem(
+                    painterResource(R.drawable.footer_profile),
+                    stringResource(R.string.footer_profile_text),
+                    selectedIndex,
+                    3
+                ) {
                     if (selectedIndex.value != 3) {
                         navController.navigate(NavRoutes.Profile.routes)
                         selectedIndex.value = 3

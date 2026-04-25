@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
 import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_ui.theme.BackgroundAvatar
 import com.example.core_ui.ui.CoursesCard.CardImageSpace
@@ -23,7 +22,6 @@ import com.example.feature_profile.costant.ProfileViewConstant.SPACER_COURSE_CAR
 fun CourseView(courseList: List<CoursesDomainModel>, coursesViewModel: CoursesViewModel) {
     Column(Modifier.fillMaxSize()) {
         courseList.forEachIndexed { index, course ->
-            Log.d("ajgdkhjgbdjghbdjh",index.toString())
             CourseCardScreen(
                 course = course,
                 coursesViewModel,

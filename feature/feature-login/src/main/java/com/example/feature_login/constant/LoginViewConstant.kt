@@ -19,6 +19,6 @@ object LoginViewConstant {
     val INPUT_PADDING = 16.dp
     val SPACER_INPUT_TO_ERROR_TEXT = 4.dp
     val TEXT_INPUT_FONT_SIZE = 14.sp
-    val GRAY_LINE_HEIGHT=1.dp
+    val GRAY_LINE_HEIGHT = 1.dp
     val SOCIAL_MEDIA_IMAGE_PADDING = 7.dp
 }

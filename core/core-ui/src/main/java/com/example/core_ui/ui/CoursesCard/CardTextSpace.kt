@@ -1,5 +1,6 @@
 package com.example.core_ui.ui.CoursesCard
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_ui.R
 import com.example.core_ui.constant.CoursesCardConstant.BOTTOM_SPACER_HEIGHT
 import com.example.core_ui.constant.CoursesCardConstant.BUTTON_ICON_SPACER_WIDTH
@@ -29,21 +32,31 @@ import com.example.core_ui.ui.CoursePriceText
 import com.example.core_ui.ui.CourseTitleText
 
 @Composable
-fun CardTextSpace(title: String, text: String, price: String) {
-    Column(Modifier.fillMaxWidth().padding(horizontal = HORIZONTAL_PADDING)) {
+fun CardTextSpace(
+    course: CoursesDomainModel,
+    onClickCourse: (Int) -> Unit,
+
+    ) {
+    Column(Modifier
+        .fillMaxWidth()
+        .padding(horizontal = HORIZONTAL_PADDING)) {
         Spacer(Modifier.height(TOP_SPACER_HEIGHT))
-        CourseTitleText(text = title)
+        CourseTitleText(text = course.title)
         Spacer(Modifier.height(TITLE_TO_DESCRIPTION_SPACER_HEIGHT))
-        CourseDescriptionText(text = text)
+        CourseDescriptionText(text = course.text)
         Spacer(Modifier.height(DESCRIPTION_TO_PRICE_SPACER_HEIGHT))
         Row {
-            CoursePriceText(text = "$price ₽")
+            CoursePriceText(text = "${course.price} ${stringResource(R.string.rubles_icon)}")
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        onClickCourse.invoke(course.id)
+                    },
                 horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                CourseMoreButtonText(text = "Подробнее")
+                CourseMoreButtonText(text = stringResource(R.string.courses_card_button_text))
                 Spacer(Modifier.width(BUTTON_ICON_SPACER_WIDTH))
                 Icon(
                     painter = painterResource(R.drawable.arrow_right),

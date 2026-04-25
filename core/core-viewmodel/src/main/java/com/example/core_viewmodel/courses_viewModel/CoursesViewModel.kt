@@ -29,46 +29,51 @@ class CoursesViewModel(
             val result = getAllCoursesUseCase.invoke()
             result.onSuccess { courses ->
                 coursesInfo.addAll(courses)
-                _coursesUiState.value = CoursesUIState.Success(coursesInfo)
+                _coursesUiState.value = CoursesUIState.Success(courses)
             }.onFailure { error ->
                 _coursesUiState.value = CoursesUIState.Error
             }
         }
     }
+
     fun getCoursesByLike() {
         viewModelScope.launch {
             _coursesUiState.value = CoursesUIState.Loading
             val result = getCoursesByLikeUseCase.invoke()
             result.onSuccess { courses ->
-                coursesInfo.addAll(courses)
-                _coursesUiState.value = CoursesUIState.Success(coursesInfo)
+                _coursesUiState.value = CoursesUIState.Success(courses)
             }.onFailure { error ->
                 _coursesUiState.value = CoursesUIState.Error
             }
         }
     }
+
     fun isSorted() {
         _coursesUiState.value = CoursesUIState.Loading
-        _coursesUiState.value = CoursesUIState.Success(coursesInfo.sortedByDescending { it.publishDate })
+        _coursesUiState.value =
+            CoursesUIState.Success(coursesInfo.sortedByDescending { it.publishDate })
     }
+
     fun saveCourse(course: CoursesDomainModel) {
         viewModelScope.launch {
             saveCoursesUseCase.invoke(course)
         }
     }
+
     fun deleteCourse(course: CoursesDomainModel) {
         viewModelScope.launch {
             deleteCourseUseCase.invoke(course)
         }
     }
-    fun getCoursesById(id:Int){
+
+    fun getCoursesById(id: Int) {
         viewModelScope.launch {
             _coursesUiState.value = CoursesUIState.Loading
             val result = getCourseByIdUseCase.invoke(id)
             result.onSuccess { courses ->
-                if(courses !=null){
+                if (courses != null) {
                     _coursesUiState.value = CoursesUIState.Success(listOf(courses))
-                }else{
+                } else {
                     _coursesUiState.value = CoursesUIState.Error
                 }
             }.onFailure { error ->

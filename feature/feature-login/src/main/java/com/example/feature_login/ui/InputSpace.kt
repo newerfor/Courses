@@ -1,5 +1,6 @@
 package com.example.feature_login.ui
 
+import android.util.Patterns
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -98,7 +99,7 @@ fun InputEmail(email: MutableState<String>, isErrorEmail: MutableState<Boolean>)
         )
         if (isErrorEmail.value && isTouched) {
             Spacer(Modifier.height(SPACER_INPUT_TO_ERROR_TEXT))
-            ErrorInputText( stringResource(R.string.email_error_text))
+            ErrorInputText(stringResource(R.string.email_error_text))
         }
     }
 }
@@ -140,4 +141,7 @@ fun InputPassword(password: MutableState<String>) {
             }
         }
     )
+}
+fun isValidEmail(value: String): Boolean {
+    return Patterns.EMAIL_ADDRESS.matcher(value).matches()
 }

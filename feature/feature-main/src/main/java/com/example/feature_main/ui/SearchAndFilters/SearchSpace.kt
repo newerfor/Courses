@@ -22,8 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.core_ui.theme.BackgroundAvatar
 import com.example.core_ui.theme.Roboto
 import com.example.core_ui.theme.TextPrimary
@@ -40,7 +38,7 @@ import com.example.feature_main.constant.MainViewConstant.TEXT_FIELD_PADDING
 import com.example.feature_main.constant.MainViewConstant.TEXT_FIELD_SHAPE
 
 @Composable
-fun SearchSpace(){
+fun SearchSpace() {
     var searchCourses = remember { mutableStateOf("") }
 
     BasicTextField(

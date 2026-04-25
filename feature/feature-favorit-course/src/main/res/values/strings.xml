@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">feature-favorit-course</string>
-    <string name="label_text">Избранное</string>
+    <string name="favorit_label_text">Избранное</string>
 </resources>

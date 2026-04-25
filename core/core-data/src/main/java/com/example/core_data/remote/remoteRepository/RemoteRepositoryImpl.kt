@@ -1,7 +1,6 @@
 package com.example.core_data.remote.remoteRepository
 
 import android.util.Log
-import com.example.core_data.constant.ApiConstant.SECOND_BASE_URL
 import com.example.core_data.remote.api.ApiService
 import com.example.core_data.remote.model.CoursesModel
 
@@ -17,7 +16,6 @@ class RemoteRepositoryImpl(
             try {
                 secondApiService.getCoursesSecondApi()
             } catch (e2: Exception) {
-                Log.d("Pagination", "GG Отвал обоих ${e.message}, ${e2.message}")
                 throw Exception("Оба API недоступны: ${e.message}, ${e2.message}")
             }
         }

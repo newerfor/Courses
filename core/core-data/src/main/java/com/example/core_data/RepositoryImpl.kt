@@ -1,16 +1,11 @@
 package com.example.core_data
 
-import android.util.Log
 import com.example.core_data.local.localRepository.LocalDataSource
 import com.example.core_data.mapper.Mapper
-import com.example.core_data.remote.model.CourseModel
 import com.example.core_data.remote.remoteRepository.RemoteDataSource
 import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_domain.model.UserInfoDomainModel
 import com.example.core_domain.repository.CoursesRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class RepositoryImpl(
     private val remoteDataSource: RemoteDataSource,
@@ -27,8 +22,18 @@ class RepositoryImpl(
 
     override suspend fun getAllCourses(): List<CoursesDomainModel> {
         val result = remoteDataSource.getCoursesRemote()
+        val localResult = getCoursesByLike()
         return result.courses.map { course ->
-            mapper.mapModelToDomainCourse(course, course.id % 3)
+            var localHasLike = course.hasLike
+            localResult.forEach { localCourse ->
+                if (localCourse.id == course.id) {
+                    localHasLike = localCourse.hasLike
+                }
+            }
+            if (course.hasLike) {
+                saveCourses(mapper.mapModelToDomainCourse(course, course.id % 3, localHasLike))
+            }
+            mapper.mapModelToDomainCourse(course, course.id % 3, localHasLike)
         }
     }
 
@@ -49,10 +54,10 @@ class RepositoryImpl(
     override suspend fun getCoursesById(id: Int): CoursesDomainModel? {
         val apiResult = remoteDataSource.getCoursesRemote()
         return apiResult.courses.find { it.id == id }?.let {
-
             mapper.mapModelToDomainCourse(
                 it,
-                it.id % 3
+                it.id % 3,
+                it.hasLike
             )
         }
     }

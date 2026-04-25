@@ -1,6 +1,5 @@
 package com.example.feature_login.ui
 
-import android.util.Patterns
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,7 +44,7 @@ fun InputSpace(isLoginTrue: () -> Unit, userViewModel: UserInfoViewModel) {
     val isValid = isValidAll(email, password, isErrorEmail)
     Button(
         onClick = {
-            if(isValid){
+            if (isValid) {
                 userViewModel.saveUserInfo(
                     user = UserInfoDomainModel(
                         email = email.value,
@@ -90,7 +89,4 @@ fun isValidAll(
     }
 }
 
-fun isValidEmail(value: String): Boolean {
-    return Patterns.EMAIL_ADDRESS.matcher(value).matches()
-}
 

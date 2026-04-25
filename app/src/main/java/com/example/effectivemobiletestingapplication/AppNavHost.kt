@@ -14,7 +14,7 @@ import com.example.feature_single_course.ui.CourseInfoMain
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = NavRoutes.Profile.routes)
+    NavHost(navController = navController, startDestination = NavRoutes.Login.routes)
     {
         composable(NavRoutes.Login.routes) {
             LoginMainScreen(
@@ -25,16 +25,33 @@ fun AppNavHost() {
                 }
             )
         }
-        composable(NavRoutes.MainScreen.routes){
-            Main(navController)
+        composable(NavRoutes.MainScreen.routes) {
+            Main(navController) { id ->
+                navController.navigate(
+                    NavRoutes.CourseInfo.passId(id)
+                )
+            }
         }
-        composable (NavRoutes.Favorite.routes){
-            FavoriteCourseMain(navController)
+        composable(NavRoutes.Favorite.routes) {
+            FavoriteCourseMain(navController) { id ->
+                navController.navigate(
+                    NavRoutes.CourseInfo.passId(id)
+                )
+            }
         }
-        composable(NavRoutes.CourseInfo.routes){
-            CourseInfoMain(navController,100)
+        composable(NavRoutes.CourseInfo.routes) {
+            val id = it.arguments?.getString("courseId")?.toInt()
+            if (id != null) {
+                CourseInfoMain(navController, id) {
+                    navController.popBackStack()
+                }
+            } else {
+                CourseInfoMain(navController, 100) {
+                    navController.popBackStack()
+                }
+            }
         }
-        composable(NavRoutes.Profile.routes){
+        composable(NavRoutes.Profile.routes) {
             ProfileMain(navController)
         }
     }

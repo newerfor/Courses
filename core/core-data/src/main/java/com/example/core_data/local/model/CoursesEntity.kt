@@ -15,5 +15,5 @@ data class CoursesEntity(
     val startDate: String,
     val hasLike: Boolean,
     val publishDate: String,
-    val image : Int
+    val image: Int
 )

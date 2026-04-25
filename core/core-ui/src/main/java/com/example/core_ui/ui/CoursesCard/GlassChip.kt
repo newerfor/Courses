@@ -43,7 +43,10 @@ fun GlassChip(
                     blurRadius = GLASS_BLUR_RADIUS
                 )
             )
-            .padding(horizontal = GLASS_CHIP_PADDING_HORIZONTAL, vertical = GLASS_CHIP_PADDING_VERTICAL),
+            .padding(
+                horizontal = GLASS_CHIP_PADDING_HORIZONTAL,
+                vertical = GLASS_CHIP_PADDING_VERTICAL
+            ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(GLASS_CHIP_SPACING),
         content = content

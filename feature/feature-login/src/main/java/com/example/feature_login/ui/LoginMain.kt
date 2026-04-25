@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -19,16 +21,20 @@ import com.example.feature_login.constant.LoginViewConstant.LOGIN_SCREEN_PADDING
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginMainScreen(isLoginTrue:()->Unit) {
-    Column(Modifier.fillMaxSize().background(Background)){
-        LoginMain(isLoginTrue=isLoginTrue)
+fun LoginMainScreen(isLoginTrue: () -> Unit) {
+    Column(Modifier
+        .fillMaxSize()
+        .background(Background)
+        .verticalScroll(rememberScrollState())) {
+        LoginMain(isLoginTrue = isLoginTrue)
     }
 }
+
 @Composable
 fun LoginMain(
     userViewModel: UserInfoViewModel = koinViewModel(),
     isLoginTrue: () -> Unit,
-){
+) {
     val userUiState by userViewModel.userUiState.collectAsState()
     val isLogging = remember { mutableStateOf(false) }
     LaunchedEffect(userUiState) {
@@ -36,10 +42,13 @@ fun LoginMain(
             isLogging.value = true
         }
     }
-    Column(Modifier.fillMaxSize().systemBarsPadding().padding(top = LOGIN_SCREEN_PADDING_TOP)){
-        if(!isLogging.value){
-           LoginScreen(isLoginTrue,userViewModel)
-        }else{
+    Column(Modifier
+        .fillMaxSize()
+        .systemBarsPadding()
+        .padding(top = LOGIN_SCREEN_PADDING_TOP)) {
+        if (!isLogging.value) {
+            LoginScreen(isLoginTrue, userViewModel)
+        } else {
             isLoginTrue.invoke()
         }
     }

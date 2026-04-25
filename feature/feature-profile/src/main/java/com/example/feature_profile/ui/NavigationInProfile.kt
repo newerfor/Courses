@@ -28,52 +28,69 @@ import com.example.feature_profile.costant.ProfileViewConstant.PROFILE_NAVIGATIO
 import com.example.feature_profile.costant.ProfileViewConstant.PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER
 
 @Composable
-fun NavigationInProfile(){
-    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(PROFILE_NAVIGATION_BOX_CLIP)).background(BackgroundAvatar)) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = PROFILE_NAVIGATION_BOX_PADDING)){
+fun NavigationInProfile() {
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(PROFILE_NAVIGATION_BOX_CLIP))
+            .background(BackgroundAvatar)
+    ) {
+        Column(Modifier
+            .fillMaxWidth()
+            .padding(horizontal = PROFILE_NAVIGATION_BOX_PADDING)) {
             Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
-                Row(Modifier.weight(1f)){
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.weight(1f)) {
                     ActionMenuItemText(stringResource(R.string.send_to_helper))
-                }
-                    Icon(
-                        painter = painterResource(R.drawable.right_arrow),
-                        contentDescription = null,
-                        tint =  TextPrimary,
-                        modifier = Modifier.size(PROFILE_NAVIGATION_ICON_SIZE)
-                    )
-
-            }
-            Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
-
-            Spacer(Modifier.fillMaxWidth().height(PROFILE_NAVIGATION_LINE_SIZE).background(color = LineColor))
-
-            Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
-                Row(Modifier.weight(1f)){
-                    ActionMenuItemText(stringResource(R.string.go_to_setting))
                 }
                 Icon(
                     painter = painterResource(R.drawable.right_arrow),
                     contentDescription = null,
-                    tint =  TextPrimary,
+                    tint = TextPrimary,
                     modifier = Modifier.size(PROFILE_NAVIGATION_ICON_SIZE)
                 )
 
             }
             Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
 
-            Spacer(Modifier.fillMaxWidth().height(PROFILE_NAVIGATION_LINE_SIZE).background(color = LineColor))
+            Spacer(
+                Modifier
+                    .fillMaxWidth()
+                    .height(PROFILE_NAVIGATION_LINE_SIZE)
+                    .background(color = LineColor)
+            )
 
             Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
-                Row(Modifier.weight(1f)){
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.weight(1f)) {
+                    ActionMenuItemText(stringResource(R.string.go_to_setting))
+                }
+                Icon(
+                    painter = painterResource(R.drawable.right_arrow),
+                    contentDescription = null,
+                    tint = TextPrimary,
+                    modifier = Modifier.size(PROFILE_NAVIGATION_ICON_SIZE)
+                )
+
+            }
+            Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
+
+            Spacer(
+                Modifier
+                    .fillMaxWidth()
+                    .height(PROFILE_NAVIGATION_LINE_SIZE)
+                    .background(color = LineColor)
+            )
+
+            Spacer(Modifier.height(PROFILE_NAVIGATION_TEXT_TO_LINE_SPACER))
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.weight(1f)) {
                     ActionMenuItemText(stringResource(R.string.exit_account))
                 }
                 Icon(
                     painter = painterResource(R.drawable.right_arrow),
                     contentDescription = null,
-                    tint =  TextPrimary,
+                    tint = TextPrimary,
                     modifier = Modifier.size(PROFILE_NAVIGATION_ICON_SIZE)
                 )
 

@@ -13,12 +13,16 @@ import com.example.core_data.local.model.UserEntity
 interface CoursesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveCourse(course: CoursesEntity)
+
     @Delete
     suspend fun deleteCourse(course: CoursesEntity)
+
     @Query("SELECT * FROM courses")
     suspend fun getLikedCourse(): List<CoursesEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveUser(user: UserEntity)
+
     @Query("SELECT * FROM user WHERE id = :userId")
-    suspend fun getUser(userId: Int=USER_ID): UserEntity
+    suspend fun getUser(userId: Int = USER_ID): UserEntity
 }

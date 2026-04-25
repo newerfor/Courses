@@ -6,7 +6,7 @@ import com.example.core_domain.repository.CoursesRepository
 class SaveUserInfoUseCase(
     private val repository: CoursesRepository
 ) {
-    suspend fun invoke(user: UserInfoDomainModel){
+    suspend fun invoke(user: UserInfoDomainModel) {
         repository.saveUserInfo(user)
     }
 }

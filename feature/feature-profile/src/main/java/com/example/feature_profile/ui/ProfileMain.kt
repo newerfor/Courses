@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_ui.theme.Background
@@ -21,9 +20,10 @@ import org.koin.androidx.compose.koinViewModel
 fun ProfileMain(navController: NavController) {
     Column(
         Modifier
-        .fillMaxSize()
-        .background(Background)
-        .systemBarsPadding()) {
+            .fillMaxSize()
+            .background(Background)
+            .systemBarsPadding()
+    ) {
         Column(Modifier.weight(1f)) {
             ProfileView()
         }
@@ -61,7 +61,9 @@ fun ProfileView(coursesViewModel: CoursesViewModel = koinViewModel()) {
             imageIndex = 1
         ),
     )
-    Column(Modifier.fillMaxSize().padding(top = MAIN_TOP_PADDING)) {
-        ProfileScreen(courseList,coursesViewModel)
+    Column(Modifier
+        .fillMaxSize()
+        .padding(top = MAIN_TOP_PADDING)) {
+        ProfileScreen(courseList, coursesViewModel)
     }
 }

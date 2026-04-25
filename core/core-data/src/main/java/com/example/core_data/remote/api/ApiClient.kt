@@ -16,7 +16,7 @@ object ApiClient {
     }
     val secondInstance: ApiService by lazy {
         Retrofit.Builder()
-            .baseUrl(SECOND_BASE_URL)  // ← замени на реальный URL
+            .baseUrl(SECOND_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)

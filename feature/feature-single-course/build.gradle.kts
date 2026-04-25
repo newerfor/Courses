@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.library)  // ← application → library
+    alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
 }
@@ -39,15 +39,12 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-
     implementation(project(":core:core-ui"))
     implementation(project(":core:core-viewmodel"))
     implementation(project(":core:core-domain"))
-
     implementation(libs.koin.androidx.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.compose.foundation.layout)  // ← navigation.compose, не runtime.ktx
-
+    implementation(libs.androidx.compose.foundation.layout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

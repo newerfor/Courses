@@ -27,3 +27,4 @@ val LineColor = Color(0xFF4D555E)
 // Shared glass style
 val GlassBackGroundColor = Color(0xFF32333A)
 val nonColor = Color.Transparent
+val ProgressTextColor = Color(0xFFF2F2F3).copy(alpha = 0.5f)

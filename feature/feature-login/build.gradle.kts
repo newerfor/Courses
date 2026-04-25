@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.library)  // ← application → library
+    alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
 }
@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = 24  // ← удалены applicationId, targetSdk, versionCode, versionName
+        minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

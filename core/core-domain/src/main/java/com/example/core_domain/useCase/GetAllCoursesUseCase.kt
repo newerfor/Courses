@@ -1,10 +1,9 @@
 package com.example.core_domain.useCase
 
-import android.util.Log
 import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_domain.repository.CoursesRepository
 
-class GetAllCoursesUseCase (
+class GetAllCoursesUseCase(
     private val repository: CoursesRepository
 ) {
     suspend fun invoke(): Result<List<CoursesDomainModel>> = runCatching {

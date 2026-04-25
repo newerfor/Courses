@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">core-ui</string>
+    <string name="empty_title">Список пуст</string>
+    <string name="empty_description">Здесь пока ничего нет</string>
+    <string name="empty_button_text">Обновить</string>
+    <string name="error_text">Произошла непредвиденная ошибкыа</string>
+    <string name="error_button_text">Повторить</string>
+    <string name="courses_card_button_text">Подробнее</string>
+    <string name="rubles_icon">₽</string>
+    <string name="footer_main_text">Главная</string>
+    <string name="footer_follow_text">Избранное</string>
+    <string name="footer_profile_text">Аккаунт</string>
 </resources>

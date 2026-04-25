@@ -8,7 +8,6 @@ object MainViewConstant {
     val SPACER_FILTER_TO_COURSES_CARD = 16.dp
     val SPACER_INPUT_TO_BUTTON = 8.dp
     val SPACER_INPUT_TO_SORTED_TEXT = 16.dp
-    val SEARCH_AND_FILTERS_HORIZONTAL_PADDING = 16.dp
     val BUTTON_FILTERS_SIZE = 56.dp
     val BUTTON_FILTERS_CLIP = 28.dp
     val BUTTON_ICON_SIZE = 24.dp

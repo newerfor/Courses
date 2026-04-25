@@ -8,6 +8,6 @@ import com.example.core_data.constant.DataBaseConstant.USER_ID
 data class UserEntity(
     @PrimaryKey
     val id: Int = USER_ID,
-    val email :String,
-    val password:String
+    val email: String,
+    val password: String
 )

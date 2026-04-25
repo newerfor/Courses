@@ -11,10 +11,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
 import com.example.core_ui.theme.BackgroundInput
 import com.example.core_ui.theme.BrandGreen
-import com.example.core_ui.theme.TextPrimary
+import com.example.core_ui.theme.ProgressTextColor
 import com.example.core_ui.ui.CourseLessonsCountText
 import com.example.core_ui.ui.CourseTitleText
 import com.example.feature_profile.costant.ProfileViewConstant.COURSE_END_SPACER
@@ -43,7 +42,7 @@ fun CoursesCardFirstProgressSpace(title: String) {
                 CourseLessonsCountText("50%")
             }
             CourseLessonsCountText("22")
-            CourseLessonsCountText("/44 уроков", TextPrimary)
+            CourseLessonsCountText("/44 уроков", ProgressTextColor)
         }
         Spacer(Modifier.height(COURSE_TEXT_TO_PROGRESS_BAR_SPACER))
         Row(Modifier.fillMaxWidth()) {
@@ -73,7 +72,7 @@ fun CoursesCardSecondProgressSpace(title: String) {
     Column(
         Modifier
             .fillMaxWidth()
-            .padding(horizontal =COURSE_TEXT_PADDING)
+            .padding(horizontal = COURSE_TEXT_PADDING)
     ) {
         Spacer(Modifier.height(COURSE_TEXT_SPACER))
         CourseTitleText(
@@ -85,7 +84,7 @@ fun CoursesCardSecondProgressSpace(title: String) {
                 CourseLessonsCountText("30%")
             }
             CourseLessonsCountText("14")
-            CourseLessonsCountText("/48 уроков", TextPrimary)
+            CourseLessonsCountText("/48 уроков", ProgressTextColor)
         }
         Spacer(Modifier.height(COURSE_TEXT_TO_PROGRESS_BAR_SPACER))
         Row(Modifier.fillMaxWidth()) {

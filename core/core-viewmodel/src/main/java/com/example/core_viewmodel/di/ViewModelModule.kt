@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 
 val viewModelModule = module {
-    viewModel { UserInfoViewModel(get(),get()) }
-    viewModel { CoursesViewModel(get(),get(),get(),get(),get()) }
+    viewModel { UserInfoViewModel(get(), get()) }
+    viewModel { CoursesViewModel(get(), get(), get(), get(), get()) }
 }

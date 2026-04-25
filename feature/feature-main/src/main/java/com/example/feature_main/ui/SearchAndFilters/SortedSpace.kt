@@ -1,6 +1,5 @@
 package com.example.feature_main.ui.SearchAndFilters
 
-import android.widget.Space
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,9 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.core_ui.theme.BrandGreen
-import com.example.core_ui.theme.TextPrimary
 import com.example.core_ui.ui.SortText
 import com.example.core_viewmodel.courses_viewModel.CoursesViewModel
 import com.example.feature_main.R

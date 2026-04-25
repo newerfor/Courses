@@ -18,32 +18,37 @@ import com.example.feature_single_course.constant.CourseInfoLogicConstant.GET_CO
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun CourseInfoMain(navController: NavController,id:Int){
-    Column(Modifier.fillMaxSize().background(Background).navigationBarsPadding()) {
-        Column(Modifier.weight(1f)){
-            CourseInfoView(id=id)
+fun CourseInfoMain(navController: NavController, id: Int, onCLickBack: () -> Unit) {
+    Column(Modifier
+        .fillMaxSize()
+        .background(Background)
+        .navigationBarsPadding()) {
+        Column(Modifier.weight(1f)) {
+            CourseInfoView(id = id, onCLickBack = onCLickBack)
         }
         Column {
             NavigationBar(
-                navController =navController ,
+                navController = navController,
             )
         }
     }
 
 }
+
 @Composable
 fun CourseInfoView(
     coursesViewModel: CoursesViewModel = koinViewModel(),
-    id:Int
-){
+    id: Int,
+    onCLickBack: () -> Unit
+) {
     val coursesUiState by coursesViewModel.coursesUiState.collectAsState()
     LaunchedEffect(Unit) {
         coursesViewModel.getCoursesById(id)
     }
-    Column(Modifier.fillMaxSize()){
-        CoursesUIState(coursesUiState, onSuccess = { courses->
-            CourseInfoScreen(courses[GET_COURSE_INDEX])
-        }){
+    Column(Modifier.fillMaxSize()) {
+        CoursesUIState(coursesUiState, onSuccess = { courses ->
+            CourseInfoScreen(courses[GET_COURSE_INDEX], coursesViewModel, onCLickBack)
+        }) {
             coursesViewModel.getAllCourses()
         }
     }

@@ -22,9 +22,12 @@ import com.example.feature_login.constant.LoginViewConstant.SOCIAL_MEDIA_IMAGE_P
 import com.example.feature_login.constant.LoginViewConstant.SPACER_DONT_HAVE_ACCOUNT_TEXT_TO_SOCIAL_MEDIA_LINE
 
 @Composable
-fun SocialMediaButtons(){
+fun SocialMediaButtons() {
     val uriHandler = LocalUriHandler.current
-    Spacer(Modifier.fillMaxWidth().height(GRAY_LINE_HEIGHT).background(color = LineColor))
+    Spacer(Modifier
+        .fillMaxWidth()
+        .height(GRAY_LINE_HEIGHT)
+        .background(color = LineColor))
     Spacer(Modifier.height(SPACER_DONT_HAVE_ACCOUNT_TEXT_TO_SOCIAL_MEDIA_LINE))
     Row(Modifier.fillMaxWidth()) {
         Image(

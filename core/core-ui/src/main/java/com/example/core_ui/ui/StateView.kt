@@ -18,6 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import com.example.core_ui.R
 import com.example.core_ui.constant.StateViewConstant.EMPTY_MESSAGE_BUTTON_CORNER
 import com.example.core_ui.constant.StateViewConstant.EMPTY_MESSAGE_DESC_TO_BUTTON_SPACER
 import com.example.core_ui.constant.StateViewConstant.EMPTY_MESSAGE_TITLE_TO_DESC_SPACER
@@ -50,11 +52,11 @@ fun LoadRound() {
 
 @Composable
 fun EmptyMessage(
-    title: String = "Список пуст",
-    description: String = "Здесь пока ничего нет",
-    buttonText: String = "Обновить",
-    onButtonClick: () -> Unit = {},
-    showButton: Boolean = true
+    title: String = stringResource(R.string.empty_title),
+    description: String = stringResource(R.string.empty_description),
+    buttonText: String = stringResource(R.string.empty_button_text),
+    onButtonClick: () -> Unit,
+    showButton: Boolean = true,
 ) {
     Column(
         modifier = Modifier
@@ -113,7 +115,7 @@ fun ErrorMessage(
             verticalAlignment = Alignment.CenterVertically
         ) {
             ActionLinkText(
-                text = "Произошла непредвиденная ошибка",
+                text = stringResource(R.string.error_text),
                 textColor = TextPrimary
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -126,7 +128,7 @@ fun ErrorMessage(
                     shape = RoundedCornerShape(ERROR_MESSAGE_BUTTON_CORNER),
                 ) {
                     ButtonLabelText(
-                        text = "Повторить",
+                        text = stringResource(R.string.error_button_text),
                         fontSize = ERROR_MESSAGE_BUTTON_FONT_SIZE
                     )
                 }

@@ -5,5 +5,7 @@ sealed class NavRoutes(val routes: String) {
     object MainScreen : NavRoutes("main")
     object Favorite : NavRoutes("favorite")
     object Profile : NavRoutes("profile")
-    object CourseInfo: NavRoutes("course_info")
+    data object CourseInfo : NavRoutes("course_info/{courseId}") {
+        fun passId(id: Int): String = "course_info/$id"
+    }
 }

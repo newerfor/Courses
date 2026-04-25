@@ -23,7 +23,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.core_domain.model.CoursesDomainModel
 import com.example.core_ui.theme.BackgroundAvatar
 import com.example.core_ui.theme.BrandGreen
@@ -33,6 +32,7 @@ import com.example.core_ui.ui.AuthorNameText
 import com.example.core_ui.ui.ButtonLabelText
 import com.example.core_ui.ui.CourseDescriptionText
 import com.example.core_ui.ui.CourseTitleLargeText
+import com.example.core_viewmodel.courses_viewModel.CoursesViewModel
 import com.example.feature_single_course.R
 import com.example.feature_single_course.constant.CourseInfoViewConstant.COURSE_INFO_AVTOR_LOGO_CLIP
 import com.example.feature_single_course.constant.CourseInfoViewConstant.COURSE_INFO_AVTOR_LOGO_SIZE
@@ -50,61 +50,33 @@ import com.example.feature_single_course.constant.CourseInfoViewConstant.COURSE_
 import com.example.feature_single_course.constant.CourseInfoViewConstant.COURSE_INFO_TEXT_SPACER
 
 @Composable
-fun CourseInfoScreen(courses: CoursesDomainModel) {
-    CourseInfoImageSpace(courses.rate,courses.startDate,courses.imageIndex)
-    Column(Modifier.padding(horizontal = COURSE_INFO_PADDING).verticalScroll(rememberScrollState())) {
-        Spacer(Modifier.height(COURSE_INFO_TEXT_SPACER))
-        CourseTitleLargeText(courses.title)
-        Spacer(Modifier.height(COURSE_INFO_TEXT_SPACER))
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically){
-            Box(Modifier.size(COURSE_INFO_AVTOR_LOGO_SIZE).clip(RoundedCornerShape(COURSE_INFO_AVTOR_LOGO_CLIP)), contentAlignment = Alignment.Center){
-                Image(
-                    painter = painterResource(R.drawable.avtor_logo),
-                    contentDescription=null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop,
-                )
-            }
-            Spacer(Modifier.width(COURSE_INFO_AVTOR_TEXT_SPACER))
-            Column {
-                AuthorLabelText(stringResource(R.string.avtor_label))
-                AuthorNameText("Merion Academy")
-            }
+fun CourseInfoScreen(
+    courses: CoursesDomainModel,
+    coursesViewModel: CoursesViewModel,
+    onCLickBack: () -> Unit
+) {
+    Column(Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())) {
+        CourseInfoImageSpace(courses, coursesViewModel, onCLickBack)
+        Column(Modifier.padding(horizontal = COURSE_INFO_PADDING)) {
+            Spacer(Modifier.height(COURSE_INFO_TEXT_SPACER))
+            CourseTitleLargeText(courses.title)
+            Spacer(Modifier.height(COURSE_INFO_TEXT_SPACER))
+            AvtorSpace()
+            Spacer(Modifier.height(COURSE_INFO_AVTOR_TO_BUTTON_SPACER))
+            ButtonSpace()
+            Spacer(Modifier.height(COURSE_INFO_BUTTON_TO_COURSE_INFO_LABEL_SPACER))
+            AboutTitleText(stringResource(R.string.cours_info_text))
+            Spacer(Modifier.height(COURSE_INFO_COURSE_INFO_LABEL_TO_INFO_SPACER))
+            CourseDescriptionText(
+                text = courses.text,
+                maxLine = Int.MAX_VALUE,
+                fontSize = COURSE_INFO_DESCRIPTION_TEXT_FONT_SIZE,
+                lineHeight = COURSE_INFO_DESCRIPTION_TEXT_LINE_HEIGHT,
+                letterSpacing = COURSE_INFO_DESCRIPTION_TEXT_LETTERSPACING
+            )
         }
-        Spacer(Modifier.height(COURSE_INFO_AVTOR_TO_BUTTON_SPACER))
-        Button(
-            onClick = {},
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(COURSE_INFO_BUTTON_HEIGHT),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = BrandGreen
-            ),
-        ) {
-            ButtonLabelText(stringResource(R.string.button_text_start_course), fontSize = COURSE_INFO_BUTTON_TEXT_FONT_SIZE)
-        }
-        Spacer(Modifier.height(COURSE_INFO_BUTTON_TO_BUTTON_SPACER))
 
-        Button(
-            onClick = {},
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(COURSE_INFO_BUTTON_HEIGHT),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = BackgroundAvatar
-            ),
-        ) {
-            ButtonLabelText(stringResource(R.string.button_text_go_to_platform), fontSize = COURSE_INFO_BUTTON_TEXT_FONT_SIZE)
-        }
-        Spacer(Modifier.height(COURSE_INFO_BUTTON_TO_COURSE_INFO_LABEL_SPACER))
-        AboutTitleText(stringResource(R.string.cours_info_text))
-        Spacer(Modifier.height(COURSE_INFO_COURSE_INFO_LABEL_TO_INFO_SPACER))
-        CourseDescriptionText(
-            text = courses.text,
-            maxLine = Int.MAX_VALUE,
-            fontSize = COURSE_INFO_DESCRIPTION_TEXT_FONT_SIZE,
-            lineHeight = COURSE_INFO_DESCRIPTION_TEXT_LINE_HEIGHT,
-            letterSpacing =COURSE_INFO_DESCRIPTION_TEXT_LETTERSPACING
-        )
     }
 }
